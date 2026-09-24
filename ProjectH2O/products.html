@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Products &amp; Services — ProjectH2O</title>
+  <meta name="description" content="Explore ProjectH2O's full range of water treatment products and services including water softeners, filtration, Clover coolers, and commercial solutions for southwest Michigan." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Product section spacing */
+    .product-section { padding: 5rem 1.5rem; }
+    .product-section:nth-child(even) { background: var(--gray); }
+
+    .product-layout {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .product-layout.reverse { direction: rtl; }
+    .product-layout.reverse > * { direction: ltr; }
+
+    .product-text h2 { color: var(--navy); margin-bottom: 0.75rem; }
+    .product-text p  { margin-bottom: 1rem; }
+
+    .product-list { margin: 1rem 0 1.5rem; }
+    .product-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+      padding: 0.45rem 0;
+      font-size: 0.97rem;
+      color: var(--muted);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+    .product-list li:last-child { border-bottom: none; }
+    .product-list li::before {
+      content: '✓';
+      background: var(--cyan);
+      color: #fff;
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 800;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    .product-visual {
+      background: linear-gradient(135deg, #e8f4fd, #c5e8f7);
+      border-radius: 20px;
+      padding: 3rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .product-visual::before {
+      content: '';
+      position: absolute;
+      top: -30px; right: -30px;
+      width: 120px; height: 120px;
+      background: rgba(0,180,230,0.15);
+      border-radius: 50%;
+    }
+    .product-visual .big-icon { font-size: 5rem; margin-bottom: 1rem; }
+    .product-visual h3 { color: var(--navy); margin-bottom: 0.5rem; }
+    .product-visual p  { font-size: 0.9rem; }
+
+    .product-visual.dark {
+      background: linear-gradient(135deg, var(--navy), #1a4fa0);
+    }
+    .product-visual.dark h3 { color: #fff; }
+    .product-visual.dark p  { color: rgba(255,255,255,0.7); }
+
+    /* Clover models grid */
+    .cooler-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .cooler-card {
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      border-top: 4px solid var(--cyan);
+      transition: transform 0.25s;
+    }
+    .cooler-card:hover { transform: translateY(-5px); }
+    .cooler-card .c-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+    .cooler-card h3 { color: var(--navy); font-size: 1.1rem; margin-bottom: 0.5rem; }
+    .cooler-card p  { font-size: 0.9rem; line-height: 1.6; }
+    .cooler-card .badge-row { margin-top: 1rem; display: flex; gap: 0.4rem; justify-content: center; flex-wrap: wrap; }
+
+    /* Commercial table */
+    .service-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1.5rem;
+      font-size: 0.97rem;
+    }
+    .service-table th {
+      background: var(--navy);
+      color: #fff;
+      padding: 0.85rem 1rem;
+      text-align: left;
+    }
+    .service-table td {
+      padding: 0.8rem 1rem;
+      border-bottom: 1px solid #e8edf4;
+      color: var(--muted);
+    }
+    .service-table tr:hover td { background: var(--cyan-bg); }
+
+    @media (max-width: 860px) {
+      .product-layout { grid-template-columns: 1fr; gap: 2rem; }
+      .product-layout.reverse { direction: ltr; }
+      .product-visual { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Top phone strip -->
+<div class="phone-strip">
+  📞 Call or text us: <a href="tel:2695391185">(269) 539-1185</a> &nbsp;|&nbsp; Serving Southwest Michigan Homes &amp; Businesses
+</div>
+
+<!-- Navigation -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="images/logo.png" alt="ProjectH2O" onerror="this.src='images/logo-placeholder.svg'" />
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html" class="active">Products &amp; Services</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="quote.html" class="nav-cta">Get a Quote</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Page Hero -->
+<div class="page-hero">
+  <h1>Products &amp; Services</h1>
+  <p>Everything you need for clean, soft, great-tasting water — for your home or business.</p>
+  <div style="display:flex;gap:0.65rem;justify-content:center;flex-wrap:wrap;margin-top:1.5rem;">
+    <span style="background:rgba(0,180,230,0.2);border:1px solid rgba(0,180,230,0.4);color:#fff;font-size:0.82rem;font-weight:600;padding:0.4rem 1rem;border-radius:50px;">🦠 We Kill Bacteria, Not Your Peace of Mind</span>
+    <span style="background:rgba(0,180,230,0.2);border:1px solid rgba(0,180,230,0.4);color:#fff;font-size:0.82rem;font-weight:600;padding:0.4rem 1rem;border-radius:50px;">💧 Clear Water, Healthy Systems</span>
+    <span style="background:rgba(0,180,230,0.2);border:1px solid rgba(0,180,230,0.4);color:#fff;font-size:0.82rem;font-weight:600;padding:0.4rem 1rem;border-radius:50px;">✅ Safe, Clean, Worry-Free Water</span>
+  </div>
+</div>
+
+<!-- Water Softeners -->
+<section class="product-section" id="softeners">
+  <div class="product-layout">
+    <div class="product-text">
+      <span class="section-label">Water Softeners</span>
+      <h2>Clear Water, Healthy Systems</h2>
+      <p>Southwest Michigan has some of the hardest water in the state. Hard water causes scale buildup on pipes and appliances, leaves spots on dishes and fixtures, dries out skin and hair, and reduces the efficiency of your water heater by up to 30%.</p>
+      <p>A ProjectH2O water softener delivers the clear water your home deserves — custom-sized to your household, engineered for efficiency, and built to last for years with minimal maintenance.</p>
+      <ul class="product-list">
+        <li>Eliminate scale on pipes, appliances, and fixtures</li>
+        <li>Softer skin, healthier hair, and brighter laundry</li>
+        <li>Extend the life of dishwashers, water heaters &amp; more</li>
+        <li>Use less detergent and cleaning products</li>
+        <li>Smart metered softeners for maximum salt efficiency</li>
+        <li>Professional sizing, installation, and service</li>
+      </ul>
+      <a href="quote.html" class="btn btn-primary">Get a Softener Quote</a>
+    </div>
+    <div class="product-visual" style="padding:0;overflow:hidden;position:relative;min-height:360px;background:none;">
+      <img src="images/giorgio-trovato-PC5kB3fC1bM-unsplash.jpg"
+           alt="Enjoying soft, clean water"
+           style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;" />
+      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,100,180,0.88) 0%,rgba(0,140,210,0.45) 55%,rgba(0,80,160,0.1) 100%);"></div>
+      <div style="position:relative;z-index:2;padding:2rem;display:flex;flex-direction:column;justify-content:flex-end;min-height:360px;">
+        <h3 style="color:#fff;margin-bottom:0.5rem;">Water Softening Systems</h3>
+        <p style="color:rgba(255,255,255,0.82);font-size:0.93rem;margin-bottom:1.25rem;">Custom-sized residential and commercial softeners — protecting your home and family every day.</p>
+        <div style="display:flex;flex-direction:column;gap:0.6rem;">
+          <div style="background:rgba(255,255,255,0.15);border-radius:8px;padding:0.65rem 1rem;display:flex;align-items:center;gap:0.6rem;">
+            <span style="font-size:1.2rem;">🏠</span>
+            <div><strong style="color:#fff;font-size:0.88rem;">Residential</strong><p style="font-size:0.78rem;color:rgba(255,255,255,0.75);margin:0">Custom-sized for your family's needs</p></div>
+          </div>
+          <div style="background:rgba(255,255,255,0.15);border-radius:8px;padding:0.65rem 1rem;display:flex;align-items:center;gap:0.6rem;">
+            <span style="font-size:1.2rem;">🏢</span>
+            <div><strong style="color:#fff;font-size:0.88rem;">Commercial</strong><p style="font-size:0.78rem;color:rgba(255,255,255,0.75);margin:0">High-capacity commercial-grade systems</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Filtration Systems -->
+<section class="product-section" id="filtration">
+  <div class="product-layout reverse">
+    <div class="product-text">
+      <span class="section-label">Filtration Systems</span>
+      <h2>We Kill Bacteria, Not Your Peace of Mind.</h2>
+      <p>Michigan groundwater and municipal supplies can contain iron, hydrogen sulfide, chlorine, nitrates, heavy metals, bacteria, and other contaminants that affect taste, odor, and health. Our filtration systems are designed specifically for the water challenges common in southwest Michigan — eliminating threats without the worry.</p>
+      <ul class="product-list">
+        <li>Iron &amp; manganese filtration — eliminate rust stains</li>
+        <li>Sulfur removal — eliminate rotten egg odors</li>
+        <li>Whole-home carbon filtration for chlorine &amp; taste</li>
+        <li>Reverse osmosis drinking water systems</li>
+        <li>UV purification for bacteria and viruses</li>
+        <li>Under-sink point-of-use filtration</li>
+        <li>Sediment filters for well water</li>
+      </ul>
+      <a href="quote.html" class="btn btn-primary">Get a Filtration Quote</a>
+    </div>
+    <div class="product-visual dark" style="padding:0;overflow:hidden;position:relative;min-height:380px;">
+      <img src="images/jacek-dylag-Vve7XkiUq_Y-unsplash.jpg"
+           alt="Clean filtered water from every tap"
+           style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;" />
+      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(10,36,114,0.92) 0%,rgba(10,36,114,0.45) 55%,rgba(0,0,0,0.1) 100%);"></div>
+      <div style="position:relative;z-index:2;padding:2rem;display:flex;flex-direction:column;justify-content:flex-end;min-height:380px;">
+        <h3 style="color:#fff;margin-bottom:0.5rem;">Advanced Filtration</h3>
+        <p style="color:rgba(255,255,255,0.78);font-size:0.93rem;margin-bottom:1.25rem;">Multi-stage filtration tailored to your specific water chemistry — clean, great-tasting water from every tap.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;text-align:center;">
+          <div style="background:rgba(255,255,255,0.12);border-radius:8px;padding:0.6rem 0.4rem;">
+            <div style="font-size:1.3rem">🏠</div>
+            <div style="font-size:0.75rem;color:rgba(255,255,255,0.75);margin-top:0.2rem">Whole Home</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.12);border-radius:8px;padding:0.6rem 0.4rem;">
+            <div style="font-size:1.3rem">🚰</div>
+            <div style="font-size:0.75rem;color:rgba(255,255,255,0.75);margin-top:0.2rem">Under-Sink</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.12);border-radius:8px;padding:0.6rem 0.4rem;">
+            <div style="font-size:1.3rem">⚗️</div>
+            <div style="font-size:0.75rem;color:rgba(255,255,255,0.75);margin-top:0.2rem">Reverse Osmosis</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.12);border-radius:8px;padding:0.6rem 0.4rem;">
+            <div style="font-size:1.3rem">☀️</div>
+            <div style="font-size:0.75rem;color:rgba(255,255,255,0.75);margin-top:0.2rem">UV Purification</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Our Commitment Strip -->
+<div style="background:linear-gradient(135deg,var(--navy) 0%,#1a4fa0 100%);padding:3.5rem 1.5rem;text-align:center;">
+  <div style="max-width:960px;margin:0 auto;">
+    <p style="font-size:0.8rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--cyan-lt);margin-bottom:1rem;">Our Three Promises</p>
+    <div style="display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;">
+      <div style="background:rgba(255,255,255,0.1);border:1px solid rgba(0,180,230,0.35);border-radius:14px;padding:1.5rem 2rem;flex:1;min-width:200px;max-width:280px;">
+        <div style="font-size:2rem;margin-bottom:0.6rem;">🦠</div>
+        <p style="color:#fff;font-weight:700;font-size:1rem;margin-bottom:0;">We Kill Bacteria, Not Your Peace of Mind.</p>
+      </div>
+      <div style="background:var(--cyan);border-radius:14px;padding:1.5rem 2rem;flex:1;min-width:200px;max-width:280px;">
+        <div style="font-size:2rem;margin-bottom:0.6rem;">💧</div>
+        <p style="color:#fff;font-weight:700;font-size:1rem;margin-bottom:0;">Clear Water, Healthy Systems</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.1);border:1px solid rgba(0,180,230,0.35);border-radius:14px;padding:1.5rem 2rem;flex:1;min-width:200px;max-width:280px;">
+        <div style="font-size:2rem;margin-bottom:0.6rem;">✅</div>
+        <p style="color:#fff;font-weight:700;font-size:1rem;margin-bottom:0;">Safe, Clean, Worry-Free Water.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Clover Water Coolers -->
+<section class="product-section" id="coolers" style="background:var(--gray)">
+  <div style="max-width:1200px;margin:0 auto">
+    <div class="section-center" style="margin-bottom:0.5rem">
+      <span class="section-label">Water Coolers &amp; Dispensers</span>
+      <h2 class="section-title">Clover — The Best in Water Dispensing</h2>
+      <p class="section-subtitle">We're authorized Clover dealers, bringing you the world's most trusted water cooler technology with local installation and support you can count on.</p>
+    </div>
+
+    <div class="cooler-grid">
+      <div class="cooler-card">
+        <div class="c-icon">🫙</div>
+        <h3>Bottled Water Coolers</h3>
+        <p>Classic top-load or bottom-load dispensers for homes and offices. Hot and cold water always available from standard 3 or 5-gallon bottles.</p>
+        <div class="badge-row">
+          <span class="badge">Home</span>
+          <span class="badge">Office</span>
+        </div>
+      </div>
+      <div class="cooler-card">
+        <div class="c-icon">🚿</div>
+        <h3>Point-of-Use Purifiers</h3>
+        <p>Plumbed directly to your water line with built-in multi-stage filtration — unlimited pure water without ever changing a bottle.</p>
+        <div class="badge-row">
+          <span class="badge">No Bottles</span>
+          <span class="badge">Commercial</span>
+        </div>
+      </div>
+      <div class="cooler-card">
+        <div class="c-icon">🪣</div>
+        <h3>Under-Sink Systems</h3>
+        <p>Clover's countertop and under-sink purifiers deliver chilled, filtered water directly from your kitchen faucet for seamless daily use.</p>
+        <div class="badge-row">
+          <span class="badge">Kitchen</span>
+          <span class="badge">Filtered</span>
+        </div>
+      </div>
+      <div class="cooler-card">
+        <div class="c-icon">☕</div>
+        <h3>Coffee Brewers</h3>
+        <p>Clover's integrated coffee brewing systems use purified water for a noticeably better cup — ideal for offices, waiting rooms, and cafés.</p>
+        <div class="badge-row">
+          <span class="badge">Office</span>
+          <span class="badge">Café</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:2.5rem">
+      <a href="quote.html" class="btn btn-primary">Get a Clover Quote</a>
+      <a href="https://clovercooler.com/products/bottled-water-coolers/" target="_blank" rel="noopener" class="btn btn-outline" style="margin-left:1rem">View Clover Products ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- Water Testing -->
+<section class="product-section" id="testing">
+  <div class="product-layout">
+    <div class="product-text">
+      <span class="section-label">Free Water Testing</span>
+      <h2>Know Your Water Before You Commit</h2>
+      <p>We believe in transparency. Before recommending any system, we perform a complimentary water quality analysis to understand exactly what's in your water. This no-pressure testing helps us design the right solution for your specific situation.</p>
+      <ul class="product-list">
+        <li>Total hardness &amp; calcium levels</li>
+        <li>Iron and manganese concentration</li>
+        <li>pH balance and alkalinity</li>
+        <li>Hydrogen sulfide (odor testing)</li>
+        <li>Total dissolved solids (TDS)</li>
+        <li>Chlorine and chloramine levels</li>
+        <li>Nitrate screening for well water</li>
+      </ul>
+      <a href="quote.html" class="btn btn-primary">Schedule Free Testing</a>
+    </div>
+    <div class="product-visual">
+      <div class="big-icon">🧪</div>
+      <h3>Free Water Analysis</h3>
+      <p>A complete, no-cost water quality test performed by our certified technician at your home or business.</p>
+      <div style="margin-top:1.5rem;background:rgba(0,180,230,0.08);border-radius:10px;padding:1.25rem;text-align:left;">
+        <p style="font-size:0.88rem;color:var(--navy);font-weight:600;margin-bottom:0.5rem;">What to expect:</p>
+        <p style="font-size:0.87rem;color:var(--muted);margin:0">✓ On-site visit at your convenience<br/>✓ Professional water test kit<br/>✓ Detailed results explained clearly<br/>✓ Personalized solution recommendations<br/>✓ Zero pressure or obligation</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Commercial Services -->
+<section class="product-section" id="commercial" style="background:var(--gray)">
+  <div style="max-width:1200px;margin:0 auto">
+    <div style="margin-bottom:2.5rem">
+      <span class="section-label">Commercial Solutions</span>
+      <h2 class="section-title">Built for Business</h2>
+      <p class="section-subtitle" style="max-width:600px">Whether you run a restaurant, office, manufacturing facility, or multi-unit property — we have commercial-grade water treatment solutions that scale to your needs.</p>
+    </div>
+
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-body">
+          <div class="card-icon">🍽️</div>
+          <h3>Restaurants &amp; Food Service</h3>
+          <p>Protect equipment, improve food and beverage quality, and meet health code requirements with commercial water treatment tailored to your operation.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <div class="card-icon">🏢</div>
+          <h3>Offices &amp; Workplaces</h3>
+          <p>Keep your team hydrated and productive with premium Clover cooler stations and filtration systems for offices of any size.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <div class="card-icon">🏨</div>
+          <h3>Hotels &amp; Hospitality</h3>
+          <p>Protect linens, improve guest experience, and extend appliance life with whole-property water softening and filtration.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <div class="card-icon">🏥</div>
+          <h3>Healthcare Facilities</h3>
+          <p>Medical-grade water purity for clinics, dental offices, and healthcare environments where water quality is non-negotiable.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:2.5rem">
+      <a href="quote.html" class="btn btn-primary">Get a Commercial Quote</a>
+    </div>
+  </div>
+</section>
+
+<!-- Maintenance Section -->
+<section class="product-section" id="maintenance">
+  <div style="max-width:1200px;margin:0 auto">
+    <div class="section-center" style="margin-bottom:2rem">
+      <span class="section-label">Ongoing Support</span>
+      <h2 class="section-title">Service &amp; Maintenance Plans</h2>
+      <p class="section-subtitle">We don't just install and disappear. Our maintenance plans keep your system running at peak performance year after year.</p>
+    </div>
+
+    <table class="service-table">
+      <thead>
+        <tr>
+          <th>Service</th>
+          <th>Description</th>
+          <th>Frequency</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Salt Delivery &amp; Refill</strong></td>
+          <td>We deliver and refill softener salt so you never have to worry about running out.</td>
+          <td>Monthly or as needed</td>
+        </tr>
+        <tr>
+          <td><strong>Filter Replacement</strong></td>
+          <td>Timely replacement of sediment, carbon, and specialty filter cartridges.</td>
+          <td>Quarterly or semi-annually</td>
+        </tr>
+        <tr>
+          <td><strong>System Inspection</strong></td>
+          <td>Annual checkup of all components, settings, and performance metrics.</td>
+          <td>Annual</td>
+        </tr>
+        <tr>
+          <td><strong>Cooler Sanitization</strong></td>
+          <td>Professional cleaning and sanitization of Clover water dispensers.</td>
+          <td>Semi-annually</td>
+        </tr>
+        <tr>
+          <td><strong>Emergency Service</strong></td>
+          <td>Fast response for unexpected issues or system failures.</td>
+          <td>On demand</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="text-align:center;margin-top:2rem">
+      <a href="contact.html" class="btn btn-primary">Contact Us About Maintenance</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand footer-col">
+      <img src="images/logo.png" alt="ProjectH2O" onerror="this.src='images/logo-placeholder.svg'" />
+      <p class="tagline">Pure water solutions for southwest Michigan homes and businesses. Locally owned, deeply experienced, and committed to your water quality.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products &amp; Services</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="quote.html">Get a Quote</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#softeners">Water Softeners</a></li>
+        <li><a href="#filtration">Filtration Systems</a></li>
+        <li><a href="#coolers">Clover Coolers</a></li>
+        <li><a href="#commercial">Commercial</a></li>
+        <li><a href="#testing">Water Testing</a></li>
+      </ul>
+    </div>
+    <div class="footer-col footer-contact">
+      <h4>Contact</h4>
+      <div class="contact-item"><span class="icon">📞</span><a href="tel:2695391185">(269) 539-1185</a></div>
+      <div class="contact-item"><span class="icon">✉️</span><a href="mailto:ckooi2431@gmail.com">ckooi2431@gmail.com</a></div>
+      <div class="contact-item"><span class="icon">📍</span><span>Southwest Michigan</span></div>
+      <div class="contact-item"><span class="icon">🕐</span><span>Mon–Fri: 8am–6pm<br/>Sat: 9am–3pm</span></div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 ProjectH2O. All rights reserved.</span>
+    <span>Serving Southwest Michigan with Pride</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('navToggle').addEventListener('click', function() {
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+</script>
+</body>
+</html>
